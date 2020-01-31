@@ -1,12 +1,16 @@
-.top{
+/*.top{
 	background-color: aqua;
 	padding: 10px 0px 10px 0;
-}
-.footercolor{
-	background: #E6E6FA;
+}*/
+.footercolor, nav{
+	background: #6495ED;
 	width: 100%;
 	font-style: arial;
 }
 p{
 	font-family: Century Gothic;
+}
+.navbar .navbar-nav>li>a 
+{
+	color: #000;
 }

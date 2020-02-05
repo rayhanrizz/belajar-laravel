@@ -2,15 +2,15 @@
 	background-color: aqua;
 	padding: 10px 0px 10px 0;
 }*/
-.footercolor, nav{
-	background: #6495ED;
+nav{
+	background: #FFF;
+}
+.footercolor{
+	background: #FFF;
 	width: 100%;
 	font-style: arial;
+	color: #000;
 }
 p{
 	font-family: Century Gothic;
-}
-.navbar .navbar-nav>li>a 
-{
-	color: #000;
 }

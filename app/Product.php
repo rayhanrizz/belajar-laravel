@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 	public $timestamps = false;	
-    protected $table = 'product';
+    protected $table = 'produk';
 
-    protected $fillable = ['id', 'name','stok','harga'];
+    protected $fillable = ['id', 'name','stock','harga','gambar'];
+
+    public function kategori(){
+    	return $this->hasOne('App\kategori');
+    }
 }

@@ -7,10 +7,12 @@ use App\Product;
 
 class productcontroller extends Controller
 {
-    public function produk()
+    public function produk(Request $request)
     {
-    	$data = Product::all();
-    	return view('Product.product', compact('data'));
+    	$data = Product::when($request->search, function($query) use($request){
+            $query->where('name', 'LIKE', '%'.$request->search.'%');
+        })->paginate(5);
+        return view('Product.product', compact('data'));
     }
     public function create()
     {
@@ -82,4 +84,14 @@ class productcontroller extends Controller
     	$product->delete();
     	return redirect('Product');
     }
+ //    public function cari(Request $request){
+ //   		$cari = $request->cari;
+ 
+ //    	// mengambil data dari table pegawai sesuai pencarian data
+	// 	$data = Product::where('name','LIKE',"%".$cari."%")
+	// 	->paginate(5);
+ 
+ //    	// mengirim data pegawai ke view index
+	// 	return view('Product.product',compact('data'));
+	// }
 }

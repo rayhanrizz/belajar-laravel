@@ -20,6 +20,7 @@
 							<th>Stock</th>
 							<th>Harga</th>
 							<th>Gambar</th>
+							<th>Category</th>
 							<th>Option</th>
 						</tr>
 					</thead>
@@ -31,6 +32,7 @@
 						<td>{{ $produk->stock }}</td>
 						<td>{{ $produk->harga }}</td>
 						<td><img width="120px" src="{{ url('/image/'.$produk->gambar) }}"></td>
+						<td>{{ $produk->kategori->nama_kategori }}</td>
 						<td><a href="{{url('Product/' .$produk->id. '/edit')}}" class="btn btn-warning">Edit</a> <a href="{{url('Product/' .$produk->id. '/delete')}}" class="btn btn-danger">Delete</a></td>
 					</tr>
 					@endforeach

@@ -24,6 +24,16 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
         </form>
+        <ul class="navbar-nav navbar-right">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }} </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+            </form>
+             </div>
+           </ul>
       </nav>
   <div class="main-content">
         <section class="section">
@@ -42,10 +52,19 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Barang</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="{{url('Product')}}">Data Barang</a></li>
                   <li><a class="nav-link" href="{{url('Product/create')}}">Tambah Barang</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="sidebar-menu">
+              <li class="nav-item dropdown active">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Category</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="{{url('Category')}}">Data Kategori</a></li>
+                  <li><a class="nav-link" href="{{url('Category/create')}}">Tambah Kategori</a></li>
                 </ul>
               </li>
             </ul>

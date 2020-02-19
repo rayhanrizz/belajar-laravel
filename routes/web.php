@@ -11,13 +11,22 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-Route::get('Product', 'productcontroller@produk');
-Route::get('Product/create', 'productcontroller@create');
+Auth::routes();
+
+Route::get('Product', 'productcontroller@produk')->middleware('auth');
+Route::get('Product/create', 'productcontroller@create')->middleware('auth');
 Route::post('Product', 'productcontroller@store');
-Route::get('Product/{Product}/edit', 'productcontroller@edit');
+Route::get('Product/{Product}/edit', 'productcontroller@edit')->middleware('auth');
 Route::post('Product/{Product}/update', 'productcontroller@update');
 Route::get('Product/{Product}/delete', 'productcontroller@delete');
-// Route::get('Product/cari', 'productcontroller@cari');
+
+Route::get('Category', 'kategoricontroller@index')->middleware('auth');
+Route::get('Category/create', 'kategoricontroller@create');
+Route::post('Category', 'kategoricontroller@store');
+Route::get('Category/{Category}/edit', 'kategoricontroller@edit')->middleware('auth');
+Route::post('Category/{Category}/update', 'kategoricontroller@update');
+Route::get('Category/{Category}/delete', 'kategoricontroller@delete');
+
+Route::get('/', 'productcontroller@produk')->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

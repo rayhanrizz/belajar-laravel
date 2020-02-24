@@ -25,15 +25,17 @@
           </ul>
         </form>
         <ul class="navbar-nav navbar-right">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }}
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }} </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-             @csrf
-            </form>
-             </div>
-           </ul>
+            <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                        <span>&nbsp; {{ auth()->user()->nama}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                       <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('logout') }}" >
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                        </a>
+                    </div>
+                </li>
       </nav>
   <div class="main-content">
         <section class="section">

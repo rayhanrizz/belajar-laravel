@@ -24,6 +24,7 @@
 					@endforeach
 					</tbody>
 				</table>
+				{!! $data->appends(request()->except('page'))->render() !!}
 			</div>
 		</div>
 	</div>

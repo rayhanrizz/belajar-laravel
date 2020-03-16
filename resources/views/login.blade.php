@@ -22,10 +22,10 @@
                 <form class="user" method="POST" action="{{ url('/postLogin') }}" autocomplete="off">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" placeholder="Username" name="username" required>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
                      </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-user" placeholder="Password" name="password" required>
+                        <input type="password" class="form-control " placeholder="Password" name="password" required>
                     </div>
                     <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Login">
                     <div style="margin-top: 10px">

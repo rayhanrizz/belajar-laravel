@@ -1,17 +1,23 @@
 @extends('layouts.header')
 @section('content')
 <div class="container">
+	<div class="section-header">
+            <h1>Data Barang</h1>
+          </div>
 		<div class="card">
-			<h3><center>Data Barang</center></h3>
 			<div class="card-body">
-				<form method="GET" class="form-inline">
-	              <div class="form-group">
-	                <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}" style="margin-bottom: 10px;">
-	              </div>
-	              <div class="form-group">
-	                <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Search</button>
-	              </div>
-            	</form>
+				<div class="card-header">
+					<form class="card-header-form">
+                    <div class="input-group">
+                       <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
+                        <div class="input-group-btn">
+                         <button class="btn btn-primary btn-icon"><i class="fas fa-search"></i></button>
+                        </div>
+                     </div>
+                </form>
+                <a href="export_excel" class="btn btn-success my-3" target="_blank" style="margin-left: 480px;"><i class="fas fa-print"></i> EXPORT EXCEL</a>
+            	<a href="Product/cetak_pdf" class="btn btn-danger my-3" target="_blank" style="margin-left: 10px;"><i class="fas fa-print"></i> EXPORT PDF</a>
+				</div>
 				<table class="table table-hover" id="mytable">
 					<thead>
 						<tr>

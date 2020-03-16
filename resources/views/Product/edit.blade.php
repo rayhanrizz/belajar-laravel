@@ -23,6 +23,14 @@
 						<input name="gambar" type="file" class="form-control" value="{{ url('/image/'.$product->gambar) }}">
 						<input name="hidden_image" type="hidden" class="form-control" value="{{$product->gambar}}">
 					</div>
+					<div class="form-group">
+                            <label for="product_kategori" class="control-label">Category</label>
+                            <select class="form-control" name="product_kategori" style="height: 40px;">
+                                @foreach( $kategoris as $kategori)
+		                            <option value="{{ $kategori->id_kategori }}" {{ $kategori->id_kategori == $product->product_kategori ? 'selected="selected"' : '' }}> {{ $kategori->nama_kategori }} </option>
+		                        @endforeach
+                            </select>
+                        </div>
 					<button type="submit" class="btn btn-primary" style="margin-bottom: 10px; ">Edit</button>
 				</form>
 			</div>

@@ -14,7 +14,7 @@ class usercontroller extends Controller
 
 	public function postLogin(Request $request){
     	if (Auth::attempt($request->only('username','password'))) {
-    		return redirect('Product');
+    		return redirect('Dashboard');
     	}
 
     	return redirect('login')->with('login_failed','Invalid username or password');

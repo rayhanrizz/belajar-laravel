@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jordan Warehouse</title>
+  <title>Jordan House</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -25,17 +25,16 @@
           </ul>
         </form>
         <ul class="navbar-nav navbar-right">
-            <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                        <span>&nbsp; {{ auth()->user()->nama}}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                       <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('logout') }}" >
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                        </a>
-                    </div>
-                </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            <img alt="image" src="{{asset('assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->nama}}</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-divider"></div>
+              <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </li>
       </nav>
   <div class="main-content">
         <section class="section">
@@ -49,12 +48,14 @@
   <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="#">Jordan Warehouse</a>
+            <a href="#">Jordan House</a>
           </div>
           <ul class="sidebar-menu">
-              <li class="menu-header">Dashboard</li>
-              <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Barang</span></a>
+            <li class="menu-header">Dashboard</li>
+            <li><a class="nav-item active" href="{{url('Dashboard')}}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="menu-header">Data</li>
+              <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-gift"></i><span>Barang</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="{{url('Product')}}">Data Barang</a></li>
                   <li><a class="nav-link" href="{{url('Product/create')}}">Tambah Barang</a></li>
@@ -62,8 +63,8 @@
               </li>
             </ul>
             <ul class="sidebar-menu">
-              <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Category</span></a>
+              <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-newspaper"></i><span>Category</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="{{url('Category')}}">Data Kategori</a></li>
                   <li><a class="nav-link" href="{{url('Category/create')}}">Tambah Kategori</a></li>
@@ -75,7 +76,7 @@
 
 <footer class="main-footer">
   <div class="footer-left">
-    <p><center>Jordan Warehouse ~ copyright &#169; 2020 All rights reserved</center></p>
+    <p><center>Jordan House ~ copyright &#169; 2020 All rights reserved</center></p>
   </div>
 </footer>
 

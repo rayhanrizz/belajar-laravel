@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservation</title>
+	
+</head>
+<body>
+	<form method="" action="checkout.html">
+		<label>id</label>
+		<input type="text" name="id" readonly="" required="" id="id"><br>
+		<label>nama</label>
+		<input type="text" name="nama" required=""><br>
+		<label>alamat</label>
+		<input type="text" name="alamat"><br>
+		<label>telepon</label>
+		<input type="tel" name="tlp" required=""><br>
+		<label>mobil</label>
+		<input type="text" name="mobil" id="mobil" readonly=""><br>
+		<label>harga per hari</label>
+		<input type="text" name="harga" id="harga" readonly=""><br>
+		<label>tgl pinjam</label>
+		<div class="input-daterange input-group" id="datepicker">
+		    <input type="text" class="input-sm form-control" name="start" id="start" / required="" autocomplete="off">
+		    <span class="input-group-addon">to</span>
+		    <input type="text" class="input-sm form-control" name="end" id="end" autocomplete="off" />
+		</div>
+		<label>sopir</label>
+		<input type="checkbox" name="sopir" id="sopir" onclick="Sopir()"><br>
+		<input type="submit" name="submit" value="Pesan">
+	</form>
+
+	<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+		var harga,sopir;
+
+		var id=Date.now();
+		document.getElementById('id').value=id.toString();
+
+		var pilih = decodeURIComponent(window.location.search);
+		pilih = pilih.substring(1);
+		document.getElementById('mobil').value=pilih.toString();
+
+		if (pilih == "Toyota - Avanza Veloz 2018") 
+		{
+			harga = 250000;
+		}
+		else if (pilih == "Honda - Mobilio 2015") 
+		{
+			harga = 270000;
+		}
+		else if (pilih == "Suzuki - Ertiga 2018") 
+		{
+			harga = 275000;
+		}
+		else if (pilih == "Toyota - Innova Venturer 2015") 
+		{
+			harga = 350000;
+		}
+		else if (pilih == "Toyota - Pajero Sport 2015") 
+		{
+			harga = 400000;
+		}
+		else if (pilih == "Honda - Jazz RS 2015") 
+		{
+			harga = 240000;
+		}
+		else if (pilih == "Toyota - Alphard Q 2015") 
+		{
+			harga = 800000;
+		}
+		else if (pilih == "Toyota - Camry V 2018") 
+		{
+			harga = 600000;
+		}
+		else if (pilih == "Honda - CRV 2016") 
+		{
+			harga = 300000;
+		}
+		
+		document.getElementById('harga').value=harga.toString();
+		var sop=0, pir=100000;
+		function Sopir() {
+			har=document.getElementById('harga').value;
+			sop=parseInt(har);
+			if (document.getElementById("sopir").checked == true) {
+				sop+=pir;
+			}
+			soupir=parseInt(sop);
+			document.getElementById('hargasem').value=soupir;
+		}
+
+		$('.input-daterange').datepicker({
+		    autoclose: true
+		});
+	</script>
+</body>
+</html>

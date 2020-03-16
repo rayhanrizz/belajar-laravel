@@ -4,19 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\kategori;
+
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+
+use PDF;
 
 class productcontroller extends Controller
 {
     public function produk(Request $request)
     {
     	$data = Product::when($request->search, function($query) use($request){
-            $query->where('name', 'LIKE', '%'.$request->search.'%');
+            $query->where('name', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('stock', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('harga', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('product_kategori', 'LIKE', '%'.$request->search.'%');
         })->paginate(5);
         return view('Product.product', compact('data'));
     }
     public function create()
     {
-    	return view('Product.create');
+        $data = kategori::all();
+    	return view('Product.create', compact('data'));
     }
     public function store(Request $request)
     {
@@ -39,6 +50,7 @@ class productcontroller extends Controller
 			'stock' => $request->stock,
 			'harga' => $request->harga,
 			'gambar' => $nama_file,
+            'product_kategori'=>$request->product_kategori,
 		]);
 
     	// Product::create($request->all());
@@ -46,8 +58,9 @@ class productcontroller extends Controller
     }
     public function edit($id)
     {
+        $kategoris = kategori::all();
     	$product = Product::findOrFail($id);
-    	return view('Product.edit', compact('product'));
+    	return view('Product.edit', compact('product'))->with('kategoris', $kategoris);
     }
     public function update($id, Request $request)
     {
@@ -65,7 +78,8 @@ class productcontroller extends Controller
     		$request->validate([
     			'name' => 'required',
     			'stock' => 'required',
-    			'harga' => 'required'
+    			'harga' => 'required',
+                'product_kategori' => 'required'
     		]);
     	}
 		
@@ -75,6 +89,7 @@ class productcontroller extends Controller
 			'stock' => $request->stock,
 			'harga' => $request->harga,
 			'gambar' => $nama_file,
+            'product_kategori'=>$request->product_kategori,
 		]);
     	return redirect('Product');
     }
@@ -84,14 +99,15 @@ class productcontroller extends Controller
     	$product->delete();
     	return redirect('Product');
     }
- //    public function cari(Request $request){
- //   		$cari = $request->cari;
+
+    public function export_excel()
+    {
+        return Excel::download(new ProductExport, 'product.xlsx');
+    }
+    public function cetak_pdf(){
+        $data=Product::all();
  
- //    	// mengambil data dari table pegawai sesuai pencarian data
-	// 	$data = Product::where('name','LIKE',"%".$cari."%")
-	// 	->paginate(5);
- 
- //    	// mengirim data pegawai ke view index
-	// 	return view('Product.product',compact('data'));
-	// }
+        $pdf = PDF::loadview('Product.product_pdf', compact('data'));
+        return $pdf->download('Laporan Product'.date('d-m-Y ').'on'.date(' h-ia').'.pdf');
+    }
 }

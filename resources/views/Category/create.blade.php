@@ -10,10 +10,6 @@
 						<label for="nama" class="control-label">Nama kategori</label>
 						<input name="nama_kategori" type="text" class="form-control">
 					</div>
-					<div class="form-group">
-						<label for="stock" class="control-label">Product ID</label>
-						<input name="product_id" type="text" class="form-control">
-					</div>
 					<button type="submit" class="btn btn-primary" style="margin-bottom: 10px; ">Submit</button>
 				</form>
 			</div>

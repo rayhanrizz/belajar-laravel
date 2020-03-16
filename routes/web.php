@@ -15,6 +15,10 @@
 // Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/product_list', 'WelcomeController@product_list');
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
 
 Route::get('/login', 'usercontroller@index')->name('login');
 Route::post('/postLogin', 'usercontroller@postLogin');
@@ -35,3 +39,11 @@ Route::post('Category', 'kategoricontroller@store')->middleware('auth');
 Route::get('Category/{Category}/edit', 'kategoricontroller@edit')->middleware('auth');
 Route::post('Category/{Category}/update', 'kategoricontroller@update')->middleware('auth');
 Route::get('Category/{Category}/delete', 'kategoricontroller@delete')->middleware('auth');
+
+Route::get('export_excel', 'productcontroller@export_excel');
+Route::get('Product/cetak_pdf', 'productcontroller@cetak_pdf');
+
+Route::get('export_excel_kat', 'kategoricontroller@export_excel');
+Route::get('Category/cetak_pdf', 'kategoricontroller@cetak_pdf');
+
+Route::get('Dashboard', 'WelcomeController@countbrg');

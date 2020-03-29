@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersSeeder extends Seeder
+class kategori_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        Factory(App\User::class,2)->create();
+        Factory(App\kategori::class,5)->create();
     }
 }

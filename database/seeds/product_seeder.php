@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
-use App\Product;
 
-class ProductSeeder extends Seeder
+class product_seeder extends Seeder
 {
     /**
      * Run the database seeds.

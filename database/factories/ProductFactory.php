@@ -11,6 +11,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->word,
     	'stock' => $faker->numberBetween(1,20),
     	'harga' => $faker->numberBetween(200000,3000000),
-    	'gambar' => $faker->picsum('public/image',400,400, false)
+    	'gambar' => $faker->picsum('public/image',400,400, false),
+    	'product_kategori' => $faker->numberBetween(1,6)
     ];
 });
